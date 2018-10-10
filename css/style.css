@@ -1,0 +1,10 @@
+.item-select:hover{
+    cursor: pointer;
+    box-shadow: inset 0px 0px 3px 1px #6c757d;
+    transition: all 300ms ease-in-out;
+}
+
+.item-select.active {
+    box-shadow: inset 0px 0px 3px 1px #6c757d;
+    transition: all 300ms ease-in-out;
+}
