@@ -12,15 +12,15 @@
                 <input type="hidden" name="id">
                 <div class="form-group">
                     <label class="font-weight-bold">Razão Social</label>
-                    <input type="text" name="rsocial" class="form-control form-control-sm">
+                    <input type="text" name="rsocial" class="form-control form-control-sm" placeholder="Digite a razão social">
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">Nome Fantasia</label>
-                    <input type="text" name="fantasia" class="form-control form-control-sm">
+                    <input type="text" name="fantasia" class="form-control form-control-sm" placeholder="Digite o nome fantasia da empresa">
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">CNPJ</label>
-                    <input type="text" name="cnpj" class="form-control form-control-sm" data-mask="00.000.000/0000-00" data-mask-reverse="true">
+                    <input type="text" name="cnpj" class="form-control form-control-sm" placeholder="00.000.000/0000-00" data-mask="00.000.000/0000-00" data-mask-reverse="true">
                 </div>
             </div>
             <div class="modal-footer">

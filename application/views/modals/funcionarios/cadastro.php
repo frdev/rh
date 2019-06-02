@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <form id="formFuncionario" class="modal-content">
             <div class="modal-header">
-                <h5 id="modalCadastro" class="font-weight-bold">Adicionar Empresa</h5>
+                <h5 id="modalCadastro" class="font-weight-bold">Funcionário</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,19 +13,19 @@
                 <input type="hidden" name="id">
                 <div class="form-group">
                     <label class="font-weight-bold">Nome</label>
-                    <input type="text" name="nome" class="form-control form-control-sm" required>
+                    <input type="text" name="nome" class="form-control form-control-sm" placeholder="Nome completo do funcionário" required>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="font-weight-bold">CPF</label>
-                            <input type="text" name="cpf" class="form-control form-control-sm" data-mask="000.000.000-00" data-mask-reverse="true" required>
+                            <input type="text" name="cpf" class="form-control form-control-sm" placeholder="000.000.000-00" data-mask="000.000.000-00" data-mask-reverse="true" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="font-weight-bold">RG</label>
-                            <input type="text" name="rg" class="form-control form-control-sm" required>
+                            <input type="text" name="rg" class="form-control form-control-sm" placeholder="RG do funcionário com dígito" required>
                         </div>
                     </div>
                 </div>
@@ -45,19 +45,19 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label class="font-weight-bold">E-mail</label>
-                    <input type="email" name="email" class="form-control form-control-sm">
+                    <input type="email" name="email" class="form-control form-control-sm" placeholder="E-mail do funcionário">
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="font-weight-bold">Celular</label>
-                            <input type="text" name="celular" class="form-control form-control-sm" required>
+                            <input type="text" name="celular" class="form-control form-control-sm" placeholder="(00)00000-0000" data-mask="(00)00000-0000" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="font-weight-bold">Residência</label>
-                            <input type="text" name="residencia" class="form-control form-control-sm">
+                            <input type="text" name="residencia" placeholder="(00)0000-0000" data-mask="(00)0000-0000" class="form-control form-control-sm">
                         </div>
                     </div>
                 </div>
@@ -65,26 +65,40 @@
             <div class="modal-header font-weight-bold">Endereço</div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="font-weight-bold">Logradouro</label>
-                    <input type="text" name="logradouro" class="form-control form-control-sm" required>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="font-weight-bold">CEP</label>
+                                <input type="text" name="cep" class="form-control form-control-sm" placeholder="00000-000" data-mask="00000-000" required>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Logradouro</label>
+                            <input type="text" name="logradouro" class="form-control form-control-sm" placeholder="Digite o logradouro" readonly>
+                        </div>
+                    </div>
                     <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Bairro</label>
+                            <input type="text" name="bairro" class="form-control form-control-sm" placeholder="Bairro do logradouro" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="font-weight-bold">Número</label>
-                            <input type="text" name="numero" class="form-control form-control-sm" required>
+                            <input type="text" name="numero" class="form-control form-control-sm" placeholder="Número da residência" required>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="font-weight-bold">Complemento</label>
-                            <input type="text" name="complemento" class="form-control form-control-sm">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="font-weight-bold">CEP</label>
-                            <input type="text" name="cep" class="form-control form-control-sm" required>
+                            <input type="text" name="complemento" placeholder="S/C" class="form-control form-control-sm">
                         </div>
                     </div>
                 </div>
@@ -92,13 +106,13 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label class="font-weight-bold">Cidade</label>
-                            <input type="text" name="cidade" class="form-control form-control-sm" required>
+                            <input type="text" name="cidade" class="form-control form-control-sm" placeholder="Cidade do endereço" readonly>
                         </div>
                     </div>
                     <div class="col-md-4">
                          <div class="form-group">
                             <label class="font-weight-bold">Estado</label>
-                            <input type="text" name="estado" class="form-control form-control-sm" required>
+                            <input type="text" name="estado" class="form-control form-control-sm" placeholder="Estado do endereço" readonly>
                         </div>
                     </div>
                 </div>
@@ -118,7 +132,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">Função</label>
-                    <input type="text" name="funcao" class="form-control form-control-sm" required>
+                    <input type="text" name="funcao" class="form-control form-control-sm" name="Função do funcionário" required>
                 </div>
                 <div class="row">
                     <div class="col-md-4">

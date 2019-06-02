@@ -114,6 +114,7 @@ runApp.controller = {
                 $('input[name="celular"]').val(result.celular);
                 $('input[name="residencia"]').val(result.residencia);
                 $('input[name="logradouro"]').val(result.logradouro);
+                $('input[name="bairro"]').val(result.bairro);
                 $('input[name="numero"]').val(result.numero);
                 $('input[name="complemento"]').val(result.complemento);
                 $('input[name="cep"]').val(result.cep);
@@ -149,6 +150,44 @@ runApp.controller = {
             $('.item-select').removeClass('active');
             $('.novo').removeClass('d-none');
             $('.editar').addClass('d-none');
+        });
+        $('input[name="cep"]').on('blur', function(){
+            var cep = $(this).val();
+            if(cep != ''){
+                cep     = cep.replace('-', '');
+                if(cep.length == 8){
+                    $.get('https://viacep.com.br/ws/'+cep+'/json/', function(data){
+                        if(data.erro == true){
+                            toastr.error('CEP inválido!');
+                            $('input[name="cidade"]').val('');
+                            $('input[name="estado"]').val('');
+                            $('input[name="logradouro"]').val('');
+                            $('input[name="logradouro"]').prop('readonly', true);
+                            $('input[name="bairro"]').val('');
+                            $('input[name="bairro"]').prop('readonly', true);
+                        } else {
+                            $('input[name="cidade"]').val(data.localidade);
+                            $('input[name="estado"]').val(data.uf);
+                            if (data.logradouro == '') {
+                                $('input[name="logradouro"]').val('');
+                                $('input[name="logradouro"]').prop('readonly', false);
+                            } else {
+                                $('input[name="logradouro"]').val(data.logradouro);
+                                $('input[name="logradouro"]').prop('readonly', true);
+                            }
+                            if (data.bairro == '') {
+                                $('input[name="bairro"]').val('');
+                                $('input[name="bairro"]').prop('readonly', false);
+                            } else {
+                                $('input[name="bairro"]').val(data.bairro);
+                                $('input[name="bairro"]').prop('readonly', true);
+                            }
+                        }
+                    });
+                } else {
+                    toastr.error('CEP incorreto!');
+                }
+            }
         });
     }
 };

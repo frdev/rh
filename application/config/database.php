@@ -70,28 +70,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+
+if ($_SERVER['HTTP_HOST'] == 'rh.harmoniabeneficios.com.br') {
+	$hostname = 'rhharmonia.mysql.dbaas.com.br';
+	$username = 'rhharmonia';
+	$password = 'Q1w2e3r4';
+} else {
+	$hostname = 'localhost';
+	$username = 'root';
+	$password = '';
+}
 $active_group  = 'default';
 $query_builder = TRUE;
-$senha         = $_SERVER['SERVER_NAME'] == 'localhost' ? '' : 'harmonia';
+$senha         = $_SERVER['SERVER_NAME'] == 'localhost' ? '' : 'Q1w2e3r4';
 
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => $senha,
-	'database' => 'rh',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
+	'dsn'          => '',
+	'hostname'     => $hostname,
+	'username'     => $username,
+	'password'     => $password,
+	'database'     => 'rhharmonia',
+	'dbdriver'     => 'mysqli',
+	'dbprefix'     => '',
+	'pconnect'     => FALSE,
+	'db_debug'     => (ENVIRONMENT !== 'production'),
+	'cache_on'     => FALSE,
+	'cachedir'     => '',
+	'char_set'     => 'utf8',
+	'dbcollat'     => 'utf8_general_ci',
+	'swap_pre'     => '',
+	'encrypt'      => FALSE,
+	'compress'     => FALSE,
+	'stricton'     => FALSE,
+	'failover'     => array(),
 	'save_queries' => TRUE
 );

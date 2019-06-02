@@ -24,7 +24,7 @@ class Funcionarios_model extends CI_Model {
                     break;                
             }
         }
-        return $this->db->select('COUNT(id) qtd')->get('funcionarios')->row_array()['qtd'];
+        return $this->db->select('COUNT(f.id) qtd')->get('funcionarios f')->row_array()['qtd'];
     }
 
     public function getFuncionarios($filtros, $limit, $offset){
@@ -68,24 +68,21 @@ class Funcionarios_model extends CI_Model {
             $existe = $this->db->like('cpf', $funcionario['cpf'], 'none')->get('funcionarios')->row_array();
             if(empty($existe)){
                 unset($f['id']);
-                $f['salario'] = str_replace('.', '',  $f['salario']);
-                $f['salario'] = str_replace(',', '.', $f['salario']);
-                $f['vr']      = str_replace('.', '',  $f['vr']);
-                $f['vr']      = str_replace(',', '.', $f['vr']);
-                $f['vt']      = str_replace('.', '',  $f['vt']);
-                $f['vt']      = str_replace(',', '.', $f['vt']);
+                $f['salario'] = toFloat($f['salario']);
+                $f['vr']      = toFloat($f['vr']);
+                $f['vt']      = toFloat($f['vt']);
                 if(!empty($funcionario['id'])){
                     $this->db->where('id', $funcionario['id'])->update('funcionarios', $f);
                     $retorno['sucesso']  = TRUE;
-                    $retorno['mensagem'] = 'Funcionário atualizada.';
+                    $retorno['mensagem'] = 'Funcionário atualizado.';
                 } else {
                     $this->db->insert('funcionarios', $f);
                     $retorno['sucesso']  = TRUE;
-                    $retorno['mensagem'] = 'Funcionário inserida.';
+                    $retorno['mensagem'] = 'Funcionário inserido.';
                 }
             } else {
                 $retorno['sucesso']  = FALSE;
-                $retorno['mensagem'] = 'Funcionário já existente com esses dados.';
+                $retorno['mensagem'] = 'Funcionário já existente com este CPF.';
             }
             return $retorno;
         } catch (Exception $e){

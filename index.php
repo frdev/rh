@@ -314,7 +314,30 @@ switch (ENVIRONMENT)
  */
 require_once BASEPATH.'core/CodeIgniter.php';
 
-
 function toReal($number){
 	return number_format($number, 2, ',', '.');
+}
+
+function toFloat($number){
+	return str_replace(['.', ','], ['', '.'], $number);
+}
+
+function formatDate($date, $format){
+	return date($format, strtotime($date));
+}
+
+function toPercent($number){
+	return ($number*100);
+}
+
+function amountToReal($number){
+	return substr_replace($number, '.', -2, 0);
+}
+
+function realToAmount($number){
+	return str_replace(['.', ','], ['', ''], $number);
+}
+
+function floatToAmount($number){
+	return str_replace('.', '', $number);
 }
